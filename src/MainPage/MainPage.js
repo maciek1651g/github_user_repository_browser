@@ -2,7 +2,6 @@ import styles from "./mainPageStyle.module.css";
 import {
     Backdrop,
     Box,
-    Button,
     CircularProgress,
     IconButton,
     Paper,
@@ -13,6 +12,7 @@ import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
 import React from "react";
 import ResultBox from "./ResultBox/ResultBox";
 import FormBox from "./FormBox/FormBox";
+import { getUserInfoAndRepos } from "../ClientAPI/ClientAPI";
 
 const MainPage = (props) => {
     const [isLoading, setLoading] = React.useState(false);
@@ -21,6 +21,17 @@ const MainPage = (props) => {
     const [repos, setRepos] = React.useState(null);
     const [errorMessage, setErrorMessage] = React.useState(null);
     const [returnTopButton, setReturnTopButton] = React.useState(false);
+
+    const onClickSearchButton = async (event) => {
+        event.preventDefault();
+        setLoading(true);
+        const result = await getUserInfoAndRepos(userName);
+        if (result) {
+            setOwner(result.owner);
+            setRepos(result.repos);
+        }
+        setLoading(false);
+    };
 
     return (
         <Paper className={styles.mainContainer} elevation={6}>
@@ -44,8 +55,12 @@ const MainPage = (props) => {
                     </Typography>
                 </Box>
                 <Box id="content">
-                    <FormBox userName={userName} setUserName={setUserName} />
-                    <ResultBox />
+                    <FormBox
+                        userName={userName}
+                        setUserName={setUserName}
+                        onClickSearchButton={onClickSearchButton}
+                    />
+                    <ResultBox owner={owner} repos={repos} />
                 </Box>
             </Box>
             <Backdrop open={isLoading}>

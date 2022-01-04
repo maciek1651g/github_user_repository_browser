@@ -22,17 +22,13 @@ const OwnerBox = (props) => {
                                 {props.owner.login}
                             </Typography>
                         </Typography>
-                        <Typography
-                            component="h2"
-                            sx={{ marginLeft: "10px" }}
-                        ></Typography>
-                        <p>
+                        <Typography>
                             <b>Link do platformy github:</b>{" "}
                             <a href={props.owner.html_url}>{props.owner.html_url}</a>
-                        </p>
-                        <p>
+                        </Typography>
+                        <Typography>
                             <b>Liczba repozytoriów:</b> {props.reposCount}
-                        </p>
+                        </Typography>
                     </Box>
                 </Box>
             </Box>

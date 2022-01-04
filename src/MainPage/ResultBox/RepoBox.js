@@ -1,23 +1,24 @@
 import styles from "./ownerBoxStyle.module.css";
+import { Box, Paper, Typography } from "@mui/material";
 
 const RepoBox = ({ repo, index }) => {
     return (
-        <div className={styles.contentResult}>
-            <div className={styles.infoRepo}>
-                <div className={styles.contentInfoRepo}>
-                    <div>
-                        <div>
-                            <h2 style={{ marginBottom: "0" }}>
+        <Paper className={styles.contentResult}>
+            <Box className={styles.infoRepo}>
+                <Box className={styles.contentInfoRepo}>
+                    <Box>
+                        <Box>
+                            <Typography component="h2" sx={{ marginBottom: "0" }}>
                                 {index}. Nazwa:{" "}
                                 <span style={{ color: "#43D7E2", fontSize: "27px" }}>
                                     {repo.name}
                                 </span>
-                            </h2>
+                            </Typography>
                             <p style={{ color: "#979797", marginTop: "0" }}>
                                 Pełna nazwa: {repo.full_name}
                             </p>
-                        </div>
-                        <div>
+                        </Box>
+                        <Box>
                             <p>
                                 <b>Opis:</b>{" "}
                                 {repo.description !== null
@@ -28,11 +29,11 @@ const RepoBox = ({ repo, index }) => {
                                 <b>Link do repozytorium:</b>{" "}
                                 <a href={repo.html_url}>{repo.name}</a>
                             </p>
-                        </div>
-                    </div>
+                        </Box>
+                    </Box>
 
-                    <div className={styles.dateAndStars}>
-                        <div>
+                    <Box className={styles.dateAndStars}>
+                        <Box>
                             <p>
                                 <b>Stworzono:</b>{" "}
                                 {new Date(repo.created_at).toLocaleString()}
@@ -41,27 +42,27 @@ const RepoBox = ({ repo, index }) => {
                                 <b>Ostatnia aktualizajca:</b>{" "}
                                 {new Date(repo.updated_at).toLocaleString()}
                             </p>
-                        </div>
-                        <div>
+                        </Box>
+                        <Box>
                             <p>
                                 <b>Liczba gwiazdek:</b> {repo.stargazers_count}
                             </p>
                             <p>
                                 <b>Otwarte zadania:</b> {repo.open_issues_count}
                             </p>
-                        </div>
-                    </div>
-                    <div>
+                        </Box>
+                    </Box>
+                    <Box>
                         <p>
                             <b>Licencja:</b>{" "}
                             {repo.license !== null
                                 ? repo.license.name
                                 : "Brak informacji."}
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </Box>
+                </Box>
+            </Box>
+        </Paper>
     );
 };
 

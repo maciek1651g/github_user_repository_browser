@@ -24,7 +24,12 @@ const ResultBox = ({ owner, repos }) => {
                         <RepoBox key={index + 1} index={index + 1} repo={repo} />
                     ))
                 ) : (
-                    <Typography className={styles.pInfo}>
+                    <Typography
+                        fontSize={25}
+                        fontWeight="bold"
+                        textAlign="center"
+                        sx={{ margin: "20px" }}
+                    >
                         Brak repozytoriów
                     </Typography>
                 )
