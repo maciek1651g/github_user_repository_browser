@@ -1,0 +1,96 @@
+.contentResult
+{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 85%;
+    margin-bottom: 13px;
+    background-color: #EBEBEB;
+}
+
+.infoRepo, .ownerInfo
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 325px;
+    width: 100%;
+    margin: 2px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    border-radius: 20px;
+}
+
+.contentInfoRepo, .contentInfoOwner
+{
+    width: 80%;
+}
+
+.contentInfoRepo
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow:hidden;
+    overflow-x: auto;
+}
+
+
+.contentInfoOwnerLeft
+{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentInfoOwnerRight
+{
+    width: 70%;
+    text-align: center;
+}
+
+.avatarOwner
+{
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+}
+
+.result
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pInfo
+{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+}
+
+
+@media only screen and (max-width: 730px) {
+    .contentInfoOwner
+    {
+        flex-direction: column;
+    }
+
+    .contentInfoOwnerLeft, .contentInfoOwnerRight
+    {
+        width: 100%;
+    }
+
+    .dateAndStars
+    {
+        flex-direction: column;
+    }
+}

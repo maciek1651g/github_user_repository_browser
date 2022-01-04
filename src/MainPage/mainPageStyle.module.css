@@ -35,9 +35,9 @@ body
 
 .form
 {
-    background-color: #F2F2F2;
     border-radius: 20px;
     padding: 20px 0;
+    margin: 20px 0;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
 }
 
