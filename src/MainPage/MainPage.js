@@ -17,8 +17,13 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ResultBox from "./ResultBox/ResultBox";
 import FormBox from "./FormBox/FormBox";
 import { getUserInfoAndRepos } from "../ClientAPI/ClientAPI";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const MainPage = (props) => {
+    const location = useLocation();
+    const { id } = useParams();
+    const navigate = useNavigate();
+
     const [isLoading, setLoading] = React.useState(false);
     const [userName, setUserName] = React.useState("");
     const [owner, setOwner] = React.useState(null);
@@ -28,10 +33,8 @@ const MainPage = (props) => {
     const [returnTopButton, setReturnTopButton] = React.useState(false);
     const [page, setPage] = React.useState(1);
 
-    const onClickSearchButton = async (event) => {
-        event.preventDefault();
+    const downloadRepos = async (userName) => {
         setLoading(true);
-        setPage(1);
         const result = await getUserInfoAndRepos(userName, onError);
         if (result) {
             setOwner(result.owner);
@@ -71,6 +74,15 @@ const MainPage = (props) => {
         };
     });
 
+    React.useEffect(() => {
+        if (id && id !== "") {
+            if (id !== userName) {
+                setUserName(id);
+            }
+            downloadRepos(id);
+        }
+    }, [location]);
+
     return (
         <Box
             sx={{ width: "100%", minHeight: "100vh", bgcolor: "background.default" }}
@@ -106,11 +118,7 @@ const MainPage = (props) => {
                         </Typography>
                     </Box>
                     <Box id="content">
-                        <FormBox
-                            userName={userName}
-                            setUserName={setUserName}
-                            onClickSearchButton={onClickSearchButton}
-                        />
+                        <FormBox userName={userName} setUserName={setUserName} />
                         <ResultBox
                             owner={owner}
                             repos={repos}

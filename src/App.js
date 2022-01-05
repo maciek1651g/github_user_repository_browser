@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import MainPage from "./MainPage/MainPage";
 import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
@@ -44,15 +44,17 @@ function App() {
                                 toggleThemeMode={() => setDarkMode(!darkMode)}
                             />
                         }
-                    />
-                    <Route
-                        path="/:id"
-                        element={
-                            <MainPage
-                                toggleThemeMode={() => setDarkMode(!darkMode)}
-                            />
-                        }
-                    />
+                    >
+                        <Route
+                            path=":id"
+                            element={
+                                <MainPage
+                                    toggleThemeMode={() => setDarkMode(!darkMode)}
+                                />
+                            }
+                        />
+                    </Route>
+                    <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </Router>
         </ThemeProvider>
