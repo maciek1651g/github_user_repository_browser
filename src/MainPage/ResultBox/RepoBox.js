@@ -1,64 +1,74 @@
 import styles from "./ownerBoxStyle.module.css";
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 
 const RepoBox = ({ repo, index }) => {
     return (
-        <Paper className={styles.contentResult}>
+        <Paper elevation={12} className={styles.contentResult}>
             <Box className={styles.infoRepo}>
                 <Box className={styles.contentInfoRepo}>
                     <Box>
                         <Box>
-                            <Typography component="h2" sx={{ marginBottom: "0" }}>
+                            <Typography
+                                variant="h5"
+                                component="h2"
+                                fontWeight="bold"
+                                sx={{ marginBottom: "0" }}
+                            >
                                 {index}. Nazwa:{" "}
-                                <span style={{ color: "#43D7E2", fontSize: "27px" }}>
+                                <Typography
+                                    component="span"
+                                    fontSize={27}
+                                    color="#43D7E2"
+                                    fontWeight="bold"
+                                >
                                     {repo.name}
-                                </span>
+                                </Typography>
                             </Typography>
-                            <p style={{ color: "#979797", marginTop: "0" }}>
+                            <Typography color="#979797" style={{ marginTop: "0" }}>
                                 Pełna nazwa: {repo.full_name}
-                            </p>
+                            </Typography>
                         </Box>
                         <Box>
-                            <p>
+                            <Typography>
                                 <b>Opis:</b>{" "}
                                 {repo.description !== null
                                     ? repo.description
                                     : "Brak opisu."}
-                            </p>
-                            <p>
+                            </Typography>
+                            <Typography>
                                 <b>Link do repozytorium:</b>{" "}
                                 <a href={repo.html_url}>{repo.name}</a>
-                            </p>
+                            </Typography>
                         </Box>
                     </Box>
 
                     <Box className={styles.dateAndStars}>
                         <Box>
-                            <p>
+                            <Typography>
                                 <b>Stworzono:</b>{" "}
                                 {new Date(repo.created_at).toLocaleString()}
-                            </p>
-                            <p>
+                            </Typography>
+                            <Typography>
                                 <b>Ostatnia aktualizajca:</b>{" "}
                                 {new Date(repo.updated_at).toLocaleString()}
-                            </p>
+                            </Typography>
                         </Box>
                         <Box>
-                            <p>
+                            <Typography>
                                 <b>Liczba gwiazdek:</b> {repo.stargazers_count}
-                            </p>
-                            <p>
+                            </Typography>
+                            <Typography>
                                 <b>Otwarte zadania:</b> {repo.open_issues_count}
-                            </p>
+                            </Typography>
                         </Box>
                     </Box>
                     <Box>
-                        <p>
+                        <Typography>
                             <b>Licencja:</b>{" "}
                             {repo.license !== null
                                 ? repo.license.name
                                 : "Brak informacji."}
-                        </p>
+                        </Typography>
                     </Box>
                 </Box>
             </Box>

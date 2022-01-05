@@ -9,6 +9,8 @@
       <change beforePath="$PROJECT_DIR$/src/MainPage/ResultBox/OwnerBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPage/ResultBox/OwnerBox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPage/ResultBox/RepoBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPage/ResultBox/RepoBox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPage/ResultBox/ResultBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPage/ResultBox/ResultBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPage/ResultBox/ownerBoxStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPage/ResultBox/ownerBoxStyle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPage/mainPageStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPage/mainPageStyle.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +59,7 @@
       <workItem from="1641291237136" duration="4571000" />
       <workItem from="1641303699717" duration="12295000" />
       <workItem from="1641325449449" duration="3496000" />
+      <workItem from="1641394042508" duration="8715000" />
     </task>
     <servers />
   </component>

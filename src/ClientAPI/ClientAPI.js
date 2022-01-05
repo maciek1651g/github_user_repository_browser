@@ -51,22 +51,23 @@ class ClientAPI {
     }
 }
 
-const getUserInfoAndRepos = async (userName) => {
+const getUserInfoAndRepos = async (userName, errorCallback = null) => {
     const clientAPI = new ClientAPI();
+    clientAPI.onErrorDelegate = errorCallback;
     const userInfo = await clientAPI.getUserInfo(userName);
 
     if (userInfo && userInfo.public_repos >= 0) {
         let countOfRepos = userInfo.public_repos;
 
         if (countOfRepos > 0) {
-            const tab = [];
+            const requests = [];
 
             for (let page = 1; countOfRepos > 0; page++) {
-                tab.push(clientAPI.getUserReposPage(userName, page));
+                requests.push(clientAPI.getUserReposPage(userName, page));
                 countOfRepos -= 100;
             }
 
-            return { owner: userInfo, repos: (await Promise.all(tab)).flat() };
+            return { owner: userInfo, repos: (await Promise.all(requests)).flat() };
         }
 
         return { owner: userInfo, repos: [] };

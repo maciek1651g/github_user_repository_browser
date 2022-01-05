@@ -1,24 +1,34 @@
 import styles from "./ownerBoxStyle.module.css";
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 
 const OwnerBox = (props) => {
     return (
         <Box className={styles.contentResult}>
-            <Box className={styles.ownerInfo}>
+            <Paper elevation={12} className={styles.ownerInfo}>
                 <Box className={styles.contentInfoOwner}>
                     <Box className={styles.contentInfoOwnerLeft}>
                         <Box className={styles.avatarOwner}>
                             <img
                                 src={props.owner.avatar_url}
                                 alt="Avatar"
-                                style={{ width: "100%", height: "100%" }}
+                                className={styles.avatar}
                             />
                         </Box>
                     </Box>
-                    <Box className={styles.contentInfoOwnerRight}>
-                        <Typography component="h2" sx={{ marginLeft: "10px" }}>
+                    <Stack spacing={2} className={styles.contentInfoOwnerRight}>
+                        <Typography
+                            variant="h5"
+                            component="h2"
+                            fontWeight={"bold"}
+                            sx={{ marginLeft: "10px" }}
+                        >
                             Właściciel repozytoriów:{" "}
-                            <Typography sx={{ color: "#43D7E2", fontSize: "30px" }}>
+                            <Typography
+                                component="span"
+                                fontSize={28}
+                                fontWeight={"bold"}
+                                color="#43D7E2"
+                            >
                                 {props.owner.login}
                             </Typography>
                         </Typography>
@@ -29,9 +39,9 @@ const OwnerBox = (props) => {
                         <Typography>
                             <b>Liczba repozytoriów:</b> {props.reposCount}
                         </Typography>
-                    </Box>
+                    </Stack>
                 </Box>
-            </Box>
+            </Paper>
         </Box>
     );
 };
