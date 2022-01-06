@@ -17,12 +17,11 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ResultBox from "./ResultBox/ResultBox";
 import FormBox from "./FormBox/FormBox";
 import { getUserInfoAndRepos } from "../ClientAPI/ClientAPI";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const MainPage = (props) => {
     const location = useLocation();
     const { id } = useParams();
-    const navigate = useNavigate();
 
     const [isLoading, setLoading] = React.useState(false);
     const [userName, setUserName] = React.useState("");
@@ -33,7 +32,7 @@ const MainPage = (props) => {
     const [returnTopButton, setReturnTopButton] = React.useState(false);
     const [page, setPage] = React.useState(1);
 
-    const downloadRepos = async (userName) => {
+    const downloadAndShowRepos = async (userName) => {
         setLoading(true);
         const result = await getUserInfoAndRepos(userName, onError);
         if (result) {
@@ -42,15 +41,20 @@ const MainPage = (props) => {
             setRepos(result.repos);
         }
         setLoading(false);
+        resetPagination();
     };
 
     const onError = (error) => {
-        setErrorMessage(error.errorText);
+        setErrorMessage(error.errorMessageForUser);
         setShowErrorMessage(true);
     };
 
     const disableErrorMessage = () => {
         setShowErrorMessage(false);
+    };
+
+    const resetPagination = () => {
+        setPage(1);
     };
 
     const returnToTop = () => {
@@ -79,7 +83,7 @@ const MainPage = (props) => {
             if (id !== userName) {
                 setUserName(id);
             }
-            downloadRepos(id);
+            downloadAndShowRepos(id);
         }
     }, [location]);
 

@@ -1,29 +1,33 @@
 class ErrorAPI {
     errorCode = null;
-    errorText = null;
-    errorMessage = null;
+    errorMessageForDev = null;
+    errorMessageForUser = null;
+    errorObject = null;
 
-    constructor(code, text, message = null) {
-        this.errorCode = code;
-        if (message !== null) {
-            this.errorText = this.createText(code, message);
-        } else {
-            this.errorText = text;
-        }
+    constructor(errorCode, messageForDev, errorObject = null) {
+        this.errorCode = errorCode;
+        this.errorMessageForDev = messageForDev;
+        this.errorObject = errorObject;
 
-        this.errorMessage = message;
+        this.errorMessageForUser = this.createText(errorCode, messageForDev);
     }
 
-    createText(errorCode, message) {
+    createText(errorCode, messageForDev) {
         switch (errorCode) {
             case 404:
-                if (message === "Not Found") return "Nie znaleziono użytkownika.";
-                else return message;
+                if (messageForDev === "Not Found")
+                    return "Nie znaleziono użytkownika.";
+                else return messageForDev;
             case 401:
-                if (message === "Bad credentials") return "Niepoprawna autoryzacja.";
-                else return message;
+                if (messageForDev === "Bad credentials")
+                    return "Niepoprawna autoryzacja.";
+                else return messageForDev;
             case 403:
                 return "Przekroczono limit 60 zapytań na godzinę, proszę spróbować później.";
+            case 500:
+                if (messageForDev === "Failed to fetch")
+                    return "Błąd połączenia z usługą. Sprawdź połączenie z internetem.";
+                else return messageForDev;
             default:
                 return "Nie rozpoznany błąd.";
         }

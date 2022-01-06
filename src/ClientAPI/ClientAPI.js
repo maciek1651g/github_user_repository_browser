@@ -5,33 +5,38 @@ class ClientAPI {
     onErrorDelegate = null;
 
     async sendMessage(method, url) {
-        const response = await fetch(ClientAPI.baseUrl + url, {
-            method: method,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/vnd.github.v3+json",
-            },
-            timeout: 30000,
-        })
-            .then(await this.handleError)
-            .then((response) => response.json())
-            .catch((error) => this.onError(error));
+        let response = null;
 
-        return response ?? null;
-    }
+        try {
+            response = await fetch(ClientAPI.baseUrl + url, {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/vnd.github.v3+json",
+                },
+                timeout: 30000,
+            });
 
-    async handleError(response) {
-        if (!response.ok) {
-            const error = new ErrorAPI(
-                response.status,
-                response.statusText,
-                (await response.json()).message
-            );
+            if (!response.ok) {
+                const errorObject = await response.json();
+                const error = new ErrorAPI(
+                    response.status,
+                    errorObject.message,
+                    errorObject
+                );
 
-            throw error;
+                response = null;
+                this.onError(error);
+            } else {
+                response = await response.json();
+            }
+        } catch (err) {
+            response = null;
+            const error = new ErrorAPI(500, err.message, err);
+            this.onError(error);
         }
 
-        return response;
+        return response ?? null;
     }
 
     onError(error) {
@@ -67,7 +72,12 @@ const getUserInfoAndRepos = async (userName, errorCallback = null) => {
                 countOfRepos -= 100;
             }
 
-            return { owner: userInfo, repos: (await Promise.all(requests)).flat() };
+            return {
+                owner: userInfo,
+                repos: (await Promise.all(requests))
+                    .flat()
+                    .filter((repo) => repo !== null),
+            };
         }
 
         return { owner: userInfo, repos: [] };
