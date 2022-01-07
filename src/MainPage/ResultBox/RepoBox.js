@@ -1,5 +1,5 @@
 import styles from "./ownerBoxStyle.module.css";
-import { Box, Link, Paper, Stack, Typography } from "@mui/material";
+import { Box, Link, Paper, Typography } from "@mui/material";
 
 const RepoBox = ({ repo, index }) => {
     return (

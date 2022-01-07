@@ -89,7 +89,13 @@ const MainPage = (props) => {
 
     return (
         <Box
-            sx={{ width: "100%", minHeight: "100vh", bgcolor: "background.default" }}
+            sx={{
+                width: "100%",
+                minWidth: "480px",
+                minHeight: "100vh",
+                bgcolor: "background.default",
+                boxSizing: "border-box",
+            }}
         >
             <Paper className={styles.mainContainer} elevation={4}>
                 <Box
@@ -97,7 +103,8 @@ const MainPage = (props) => {
                         display: "flex",
                         width: "100%",
                         justifyContent: "flex-end",
-                        padding: "0 70px 0 0 ",
+                        padding: "0 40px 0 0 ",
+                        boxSizing: "border-box",
                     }}
                 >
                     <IconButton onClick={props.toggleThemeMode}>
@@ -133,7 +140,7 @@ const MainPage = (props) => {
             </Paper>
 
             <Backdrop open={isLoading}>
-                <CircularProgress color="inherit" />
+                <CircularProgress color="primary" />
             </Backdrop>
             <Snackbar
                 open={isShowErrorMessage}
