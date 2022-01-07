@@ -1,5 +1,5 @@
 import styles from "./ownerBoxStyle.module.css";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Box, Link, Paper, Stack, Typography } from "@mui/material";
 
 const OwnerBox = (props) => {
     return (
@@ -34,7 +34,9 @@ const OwnerBox = (props) => {
                         </Typography>
                         <Typography>
                             <b>Link do platformy github:</b>{" "}
-                            <a href={props.owner.html_url}>{props.owner.html_url}</a>
+                            <Link href={props.owner.html_url}>
+                                {props.owner.html_url}
+                            </Link>
                         </Typography>
                         <Typography>
                             <b>Liczba repozytoriów:</b> {props.reposCount}

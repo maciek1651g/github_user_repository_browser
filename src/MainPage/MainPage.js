@@ -93,7 +93,6 @@ const MainPage = (props) => {
         >
             <Paper className={styles.mainContainer} elevation={4}>
                 <Box
-                    onClick={props.toggleThemeMode}
                     sx={{
                         display: "flex",
                         width: "100%",
@@ -101,7 +100,7 @@ const MainPage = (props) => {
                         padding: "0 70px 0 0 ",
                     }}
                 >
-                    <IconButton>
+                    <IconButton onClick={props.toggleThemeMode}>
                         <SvgIcon>
                             <Brightness4OutlinedIcon />
                         </SvgIcon>

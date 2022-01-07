@@ -1,5 +1,5 @@
 import styles from "./ownerBoxStyle.module.css";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Box, Link, Paper, Stack, Typography } from "@mui/material";
 
 const RepoBox = ({ repo, index }) => {
     return (
@@ -37,7 +37,7 @@ const RepoBox = ({ repo, index }) => {
                             </Typography>
                             <Typography>
                                 <b>Link do repozytorium:</b>{" "}
-                                <a href={repo.html_url}>{repo.name}</a>
+                                <Link href={repo.html_url}>{repo.name}</Link>
                             </Typography>
                         </Box>
                     </Box>

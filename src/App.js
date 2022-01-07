@@ -9,11 +9,10 @@ function App() {
             mode: "dark",
             background: {
                 default: "#707070",
-                paper: "#6c6c6c",
+                paper: "#232323",
             },
             primary: {
                 main: "#43D7E2",
-                contrastText: "#FFFFFF",
             },
         },
     });
@@ -26,7 +25,6 @@ function App() {
             },
             primary: {
                 main: "#43D7E2",
-                contrastText: "#FFFFFF",
             },
         },
     });
