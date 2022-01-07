@@ -9,7 +9,9 @@ const FormBox = ({ userName, setUserName }) => {
 
     const onClickSearchButton = (event) => {
         event.preventDefault();
-        navigate("/" + userName);
+        if (userName && userName !== "") {
+            navigate("/" + userName);
+        }
     };
 
     return (

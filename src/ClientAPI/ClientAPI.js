@@ -72,11 +72,15 @@ const getUserInfoAndRepos = async (userName, errorCallback = null) => {
                 countOfRepos -= 100;
             }
 
+            const repos = (await Promise.all(requests)).flat();
+
+            if (repos.includes(null)) {
+                return null;
+            }
+
             return {
                 owner: userInfo,
-                repos: (await Promise.all(requests))
-                    .flat()
-                    .filter((repo) => repo !== null),
+                repos: repos,
             };
         }
 
