@@ -64,8 +64,8 @@ const MainPage = (props) => {
     React.useEffect(() => {
         window.onscroll = () => {
             if (
-                document.body.scrollTop > 300 ||
-                document.documentElement.scrollTop > 300
+                document.body.scrollTop > 600 ||
+                document.documentElement.scrollTop > 600
             ) {
                 if (returnTopButton === false) {
                     setReturnTopButton(true);
