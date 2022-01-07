@@ -35,7 +35,7 @@ function App() {
 
     return (
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-            <Router>
+            <Router basename="/github_user_repository_browser">
                 <Routes>
                     <Route
                         path="/"
