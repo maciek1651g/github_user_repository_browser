@@ -13,7 +13,11 @@ const ResultBox = ({ owner, repos, page, setPage }) => {
         const pageOfRepos = [];
         const numberFirstRepo = (page - 1) * 30;
 
-        for (let i = 0; i < repos.length; i++) {
+        for (
+            let i = numberFirstRepo;
+            i < numberFirstRepo + 30 && i < repos.length;
+            i++
+        ) {
             pageOfRepos.push(<RepoBox key={i + 1} index={i + 1} repo={repos[i]} />);
         }
 
