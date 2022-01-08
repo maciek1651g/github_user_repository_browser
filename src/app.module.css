@@ -1,0 +1,13 @@
+body
+{
+    margin: 0;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    background-color: #EBEBEB;
+}
+
+@media only screen and (max-width: 1000px) {
+    body
+    {
+        background-color: #858585;
+    }
+}

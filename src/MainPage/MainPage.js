@@ -12,7 +12,7 @@ import {
     Typography,
 } from "@mui/material";
 import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
-import React from "react";
+import React, { useMemo } from "react";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ResultBox from "./ResultBox/ResultBox";
 import FormBox from "./FormBox/FormBox";
@@ -62,21 +62,20 @@ const MainPage = (props) => {
     };
 
     React.useEffect(() => {
-        window.onscroll = () => {
-            if (
-                document.body.scrollTop > 600 ||
-                document.documentElement.scrollTop > 600
-            ) {
-                if (returnTopButton === false) {
-                    setReturnTopButton(true);
-                }
+        const onScroll = () => {
+            if (window.pageYOffset > 600) {
+                setReturnTopButton(true);
             } else {
-                if (returnTopButton === true) {
-                    setReturnTopButton(false);
-                }
+                setReturnTopButton(false);
             }
         };
-    });
+
+        window.addEventListener("scroll", onScroll);
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        };
+    }, []);
 
     React.useEffect(() => {
         if (id && id !== "") {
