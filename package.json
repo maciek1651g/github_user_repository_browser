@@ -2,7 +2,6 @@
   "name": "github_user_repository_browser",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maciek1651g.github.io/github_user_repository_browser",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
