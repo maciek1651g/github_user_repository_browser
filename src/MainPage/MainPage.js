@@ -23,7 +23,6 @@ const MainPage = (props) => {
     const { id } = useParams();
 
     const [isLoading, setLoading] = React.useState(false);
-    const [userName, setUserName] = React.useState("");
     const [owner, setOwner] = React.useState(null);
     const [repos, setRepos] = React.useState(null);
     const [errorMessage, setErrorMessage] = React.useState(null);
@@ -74,9 +73,6 @@ const MainPage = (props) => {
 
     React.useEffect(() => {
         if (id && id !== "") {
-            if (id !== userName) {
-                setUserName(id);
-            }
             downloadAndShowRepos(id);
         }
     }, [location]);
@@ -122,7 +118,7 @@ const MainPage = (props) => {
                         </Typography>
                     </Box>
                     <Box id="content">
-                        <FormBox userName={userName} setUserName={setUserName} />
+                        <FormBox />
                         <ResultBox
                             owner={owner}
                             repos={repos}

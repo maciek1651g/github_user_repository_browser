@@ -2,10 +2,14 @@ import styles from "../mainPageStyle.module.css";
 import InputField from "../InputField/InputField";
 import { Button, Paper, Stack } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const FormBox = ({ userName, setUserName }) => {
+const FormBox = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { id } = useParams();
+
+    const [userName, setUserName] = React.useState("");
 
     const onClickSearchButton = (event) => {
         event.preventDefault();
@@ -13,6 +17,12 @@ const FormBox = ({ userName, setUserName }) => {
             navigate("/" + userName);
         }
     };
+
+    React.useEffect(() => {
+        if (id && id !== "" && userName !== id) {
+            setUserName(id);
+        }
+    }, [location]);
 
     return (
         <Paper elevation={8} className={styles.form}>
