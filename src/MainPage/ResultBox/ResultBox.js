@@ -41,30 +41,31 @@ const ResultBox = ({ owner, repos, page, setPage }) => {
                     Tutaj pojawią się informację o użytkowniku i jego repozytoriach
                 </Typography>
             )}
-
-            {repos ? (
-                repos.length !== 0 ? (
-                    <>
-                        {generatePage()}
-                        {repos.length / 30 > 1 && (
-                            <Pagination
-                                count={Math.round(repos.length / 30) + 1}
-                                page={page}
-                                onChange={handleChangePage}
-                            />
-                        )}
-                    </>
-                ) : (
-                    <Typography
-                        fontSize={25}
-                        fontWeight="bold"
-                        textAlign="center"
-                        sx={{ margin: "20px" }}
-                    >
-                        Brak repozytoriów
-                    </Typography>
-                )
-            ) : null}
+            {repos && (
+                <>
+                    {repos.length !== 0 ? (
+                        <>
+                            {generatePage()}
+                            {repos.length / 30 > 1 && (
+                                <Pagination
+                                    count={Math.round(repos.length / 30) + 1}
+                                    page={page}
+                                    onChange={handleChangePage}
+                                />
+                            )}
+                        </>
+                    ) : (
+                        <Typography
+                            fontSize={25}
+                            fontWeight="bold"
+                            textAlign="center"
+                            sx={{ margin: "20px" }}
+                        >
+                            Brak repozytoriów
+                        </Typography>
+                    )}
+                </>
+            )}
         </Paper>
     );
 };

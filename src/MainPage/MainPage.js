@@ -4,7 +4,6 @@ import {
     Backdrop,
     Box,
     CircularProgress,
-    Fab,
     IconButton,
     Paper,
     Snackbar,
@@ -12,12 +11,12 @@ import {
     Typography,
 } from "@mui/material";
 import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
-import React, { useMemo } from "react";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import React from "react";
 import ResultBox from "./ResultBox/ResultBox";
 import FormBox from "./FormBox/FormBox";
 import { getUserInfoAndRepos } from "../ClientAPI/ClientAPI";
 import { useLocation, useParams } from "react-router-dom";
+import ArrowUpButton from "./ArrowUpButton/ArrowUpButton";
 
 const MainPage = (props) => {
     const location = useLocation();
@@ -55,10 +54,6 @@ const MainPage = (props) => {
 
     const resetPagination = () => {
         setPage(1);
-    };
-
-    const returnToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     React.useEffect(() => {
@@ -155,16 +150,7 @@ const MainPage = (props) => {
                     {errorMessage}
                 </Alert>
             </Snackbar>
-            {returnTopButton ? (
-                <Fab
-                    sx={{ position: "fixed", left: "16%", bottom: "90px" }}
-                    onClick={returnToTop}
-                    size="large"
-                    color="primary"
-                >
-                    <ArrowUpwardIcon />
-                </Fab>
-            ) : null}
+            <ArrowUpButton isVisible={returnTopButton} />
         </Box>
     );
 };

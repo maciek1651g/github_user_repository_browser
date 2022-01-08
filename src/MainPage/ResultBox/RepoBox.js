@@ -30,13 +30,17 @@ const RepoBox = ({ repo, index }) => {
                         </Box>
                         <Box>
                             <Typography>
-                                <b>Opis:</b>{" "}
+                                <Typography component="span" fontWeight="bold">
+                                    Opis:{" "}
+                                </Typography>
                                 {repo.description !== null
                                     ? repo.description
                                     : "Brak opisu."}
                             </Typography>
                             <Typography>
-                                <b>Link do repozytorium:</b>{" "}
+                                <Typography component="span" fontWeight="bold">
+                                    Link do repozytorium:{" "}
+                                </Typography>
                                 <Link href={repo.html_url}>{repo.name}</Link>
                             </Typography>
                         </Box>
@@ -45,26 +49,38 @@ const RepoBox = ({ repo, index }) => {
                     <Box className={styles.dateAndStars}>
                         <Box>
                             <Typography>
-                                <b>Stworzono:</b>{" "}
+                                <Typography component="span" fontWeight="bold">
+                                    Stworzono:{" "}
+                                </Typography>
                                 {new Date(repo.created_at).toLocaleString()}
                             </Typography>
                             <Typography>
-                                <b>Ostatnia aktualizajca:</b>{" "}
+                                <Typography component="span" fontWeight="bold">
+                                    Ostatnia aktualizajca:{" "}
+                                </Typography>
                                 {new Date(repo.updated_at).toLocaleString()}
                             </Typography>
                         </Box>
                         <Box>
                             <Typography>
-                                <b>Liczba gwiazdek:</b> {repo.stargazers_count}
+                                <Typography component="span" fontWeight="bold">
+                                    Liczba gwiazdek:
+                                </Typography>{" "}
+                                {repo.stargazers_count}
                             </Typography>
                             <Typography>
-                                <b>Otwarte zadania:</b> {repo.open_issues_count}
+                                <Typography component="span" fontWeight="bold">
+                                    Otwarte zadania:
+                                </Typography>{" "}
+                                {repo.open_issues_count}
                             </Typography>
                         </Box>
                     </Box>
                     <Box>
                         <Typography>
-                            <b>Licencja:</b>{" "}
+                            <Typography component="span" fontWeight="bold">
+                                Licencja:
+                            </Typography>{" "}
                             {repo.license !== null
                                 ? repo.license.name
                                 : "Brak informacji."}

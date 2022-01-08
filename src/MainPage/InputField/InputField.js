@@ -2,7 +2,7 @@ import styles from "./inputFieldStyle.module.css";
 import React from "react";
 
 const InputField = ({ type = "text", text, id, value, setValue }) => {
-    const onChange = (event) => {
+    const handleOnChange = (event) => {
         setValue(event.target.value);
     };
 
@@ -13,7 +13,7 @@ const InputField = ({ type = "text", text, id, value, setValue }) => {
                 type={type}
                 className={styles.loginInput}
                 value={value}
-                onChange={onChange}
+                onChange={handleOnChange}
                 required
             />
             <span className={styles.linkInput}>https://github.com/</span>
