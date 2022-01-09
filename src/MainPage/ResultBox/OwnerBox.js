@@ -22,29 +22,27 @@ const OwnerBox = (props) => {
                             fontWeight={"bold"}
                             sx={{ marginLeft: "10px" }}
                         >
-                            Właściciel repozytoriów:
+                            Właściciel repozytoriów:{" "}
                             <Typography
                                 component="span"
                                 fontSize={28}
-                                fontWeight={"bold"}
+                                fontWeight="bold"
                                 color="#43D7E2"
                             >
                                 {props.owner.login}
                             </Typography>
                         </Typography>
-                        <Typography>
-                            <Typography component="span" fontWeight="bold">
-                                Link do platformy github:{" "}
-                            </Typography>
+                        <Typography fontWeight="bold">
+                            Link do platformy github:{" "}
                             <Link href={props.owner.html_url}>
                                 {props.owner.html_url}
                             </Link>
                         </Typography>
-                        <Typography>
-                            <Typography component="span" fontWeight="bold">
-                                Liczba repozytoriów:{" "}
+                        <Typography fontWeight="bold">
+                            Liczba repozytoriów:{" "}
+                            <Typography component="span">
+                                {props.reposCount}
                             </Typography>
-                            {props.reposCount}
                         </Typography>
                     </Stack>
                 </Box>
