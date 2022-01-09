@@ -40,7 +40,7 @@ class ClientAPI {
     }
 
     onError(error) {
-        console.log(error);
+        //console.log(error);
         if (this.onErrorDelegate) this.onErrorDelegate(error);
     }
 
